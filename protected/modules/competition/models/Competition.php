@@ -20,9 +20,13 @@
  * @property SiteUser $mainSecretar
  * @property Preaction[] $preactions
  * @property Round[] $rounds
+ *
+ * The followings are the competition list
+ * @property int memberCount
  */
 class Competition extends CActiveRecord
 {
+	public $memberCount=0;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -55,6 +59,7 @@ class Competition extends CActiveRecord
 			array('localtion', 'length', 'max'=>128),
 			array('class', 'length', 'max'=>14),
 			array('emblem', 'safe'),
+			array('title', 'unique'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('cid, title, emblem, localtion, date, type, main_referee, main_secretar, class', 'safe', 'on'=>'search'),

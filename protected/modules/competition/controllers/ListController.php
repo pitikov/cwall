@@ -4,7 +4,27 @@ class ListController extends Controller
 {
 	public function actionCreate()
 	{
-		$this->render('create');
+	    $model=new Competition;
+	    // uncomment the following code to enable ajax-based validation
+	    if(isset($_POST['ajax']) && $_POST['ajax']==='competition-create-form')
+	    {
+		echo CActiveForm::validate($model);
+		Yii::app()->end();
+	    }
+
+
+	    if(isset($_POST['Competition']))
+	    {
+		$model->attributes=$_POST['Competition'];
+		if($model->validate())
+		{
+		    if ($model->save()) {
+
+			$this->redirect($this->createUrl('/competition/list/select'));
+		    } else throw new CHttpException(500,'Ошибка сервера БД');
+		}
+	    }
+	    $this->render('create',array('model'=>$model));
 	}
 
 	public function actionIndex()

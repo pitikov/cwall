@@ -46,9 +46,7 @@ class SiteController extends Controller
 		}
 	}
 
-	/**
-	 * Displays the contact page
-	 */
+	/** @brief Displays the contact page */
 	public function actionContact()
 	{
 		$model=new ContactForm;
@@ -64,8 +62,11 @@ class SiteController extends Controller
 					"MIME-Version: 1.0\r\n".
 					"Content-type: text/plain; charset=UTF-8";
 
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
+				if (mail(Yii::app()->params['developerEmail'],$subject,$model->body,$headers)) {
+				    Yii::app()->user->setFlash('contact','Спасибо за оказанное внимание. Постараюсь ответить в ближайшее время.');
+				} else {
+				    Yii::app()->user->setFlash('contact','К сожалению, в настоящее время, по независящим от нас причинам, с отправкой почты наблюдаются некоторые проблемы. Вы можете попробовать позднее, либо написать письмо самостоятельно на адрес '. CHtml::link('разработчика', 'mailto:'.Yii::app()->params['developerEmail']));
+				}
 				$this->refresh();
 			}
 		}

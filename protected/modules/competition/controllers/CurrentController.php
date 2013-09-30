@@ -68,13 +68,11 @@ class CurrentController extends Controller
 	    $model=new Competition;
 
 	    // uncomment the following code to enable ajax-based validation
-	    /*
 	    if(isset($_POST['ajax']) && $_POST['ajax']==='competition-pasport-form')
 	    {
 		echo CActiveForm::validate($model);
 		Yii::app()->end();
 	    }
-	    */
 
 	    if(isset($_POST['Competition']))
 	    {
@@ -85,7 +83,7 @@ class CurrentController extends Controller
 		    return;
 		}
 	    }
-	  $this->render('pasport',array('model'=>$model));
+	    $this->render('pasport',array('model'=>$model));
 	}
 
 	public function actionClose()

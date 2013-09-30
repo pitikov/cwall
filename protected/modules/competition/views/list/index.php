@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 <h1>Список соревнований</h1>
 
 <p>
-    <a href='<?php echo $this->createUrl('/competition/list/create');?>'>Создать новые</a>
+    <a href='<?php echo $this->createUrl('/competition/list/create');?>'>Зарегистрировать новые</a>
     <table>
 	<thead bgcolor='#5c5c5c' style='color:white;font-style:oblique;'>
 	    <tr>
@@ -36,5 +36,5 @@ $this->breadcrumbs=array(
 	    </tr>
 	</tbody>
     </table>
-    <a href='<?php echo $this->createUrl('/competition/list/create');?>'>Создать новые</a>
+    <a href='<?php echo $this->createUrl('/competition/list/create');?>'>Зарегистрировать новые</a>
 </p>

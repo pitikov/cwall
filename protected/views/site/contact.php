@@ -3,13 +3,13 @@
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
+$this->pageTitle=Yii::app()->name . ' - Обратная связь';
 $this->breadcrumbs=array(
-	'Contact',
+	'Обратная связь',
 );
 ?>
 
-<h1>Contact Us</h1>
+<h1>Обратная связь</h1>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
@@ -19,9 +19,7 @@ $this->breadcrumbs=array(
 
 <?php else: ?>
 
-<p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
-</p>
+<p>Если у вас есть предложения, пожелания или замечания относительно проекта, или если Вы хотите поучаствовать в проекте - пишите.</p>
 
 <div class="form">
 
@@ -33,7 +31,7 @@ If you have business inquiries or other questions, please fill out the following
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Поля, отмеченные <span class="required">*</span>, обязательны для заполнения.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -68,14 +66,14 @@ If you have business inquiries or other questions, please fill out the following
 		<?php $this->widget('CCaptcha'); ?>
 		<?php echo $form->textField($model,'verifyCode'); ?>
 		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
+		<div class="hint">Пожалуйста, введите символы с картинки.
+		<br/>Регистр символов не имеет значения.</div>
 		<?php echo $form->error($model,'verifyCode'); ?>
 	</div>
 	<?php endif; ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo CHtml::submitButton('Отравить'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

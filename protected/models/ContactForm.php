@@ -36,7 +36,11 @@ class ContactForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'verifyCode'=>'Verification Code',
+		    'name'=>'Представтесь пожалуйста',
+		    'email'=>'адрес для ответа',
+		    'subject'=>'Тема',
+		    'body'=>'Ваше мнение',
+		    'verifyCode'=>'Защита от ботов',
 		);
 	}
 }
