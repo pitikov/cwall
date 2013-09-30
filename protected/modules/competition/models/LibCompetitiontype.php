@@ -71,11 +71,11 @@ class LibCompetitiontype extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'prefix' => 'Prefix',
-			'title' => 'Title',
-			'vrvscode' => 'Vrvscode',
-			'description' => 'Description',
+			'id' => '№',
+			'prefix' => 'префикс таблиц',
+			'title' => 'вид',
+			'vrvscode' => 'код по ВРВС',
+			'description' => 'описание',
 		);
 	}
 

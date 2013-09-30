@@ -12,6 +12,11 @@ $this->breadcrumbs=array(
 
 <p><?php
 	$competitionStruct = array(
+	    array(
+		'id'=>0,
+		'text'=>'Болдерфест 2013',
+		'expanded'=>true,
+		'children'=>array(
 		array(
 			'id'=>1,
 			'text'=>CHtml::link('Квалификация ж 10-13','#'),
@@ -32,6 +37,7 @@ $this->breadcrumbs=array(
 				),
 			),
 		),
+	    )),
 	);
 	$this->widget('CTreeView', array('data'=>$competitionStruct));
 ?></p>

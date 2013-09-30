@@ -97,6 +97,7 @@ class Competition extends CActiveRecord
 			'main_referee' => 'гл.судья',
 			'main_secretar' => 'гл.секретарь',
 			'class' => 'класс',
+			'memberCount'=>'участников'
 		);
 	}
 
@@ -120,6 +121,7 @@ class Competition extends CActiveRecord
 		$criteria->compare('main_referee',$this->main_referee);
 		$criteria->compare('main_secretar',$this->main_secretar);
 		$criteria->compare('class',$this->class,true);
+		$criteria->compare('memberCount',$this->memberCount,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

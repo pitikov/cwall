@@ -29,13 +29,20 @@ class ListController extends Controller
 
 	public function actionIndex()
 	{
-		$this->render('index');
+	    $model=Competition::model()->findAll();
+	    
+	    $this->render('index', array('model'=>$model));
+	}
+	
+	public function actionDelete()
+	{		
+		$this->redirect($this->createUrl('/'));
 	}
 
 	public function actionSelect()
 	{
 		Yii::app()->request->cookies['competition']= new CHttpCookie('competition',1);
-		$this->redirect($this->createUrl('/competition/current'));
+		$this->redirect($this->createUrl('/competition/current',array('cid'=>1)));
 	}
 
 	// Uncomment the following methods and override them if needed
