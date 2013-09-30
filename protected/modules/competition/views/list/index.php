@@ -36,5 +36,43 @@ $this->breadcrumbs=array(
 	    </tr>
 	</tbody>
     </table>
+    <p><?php
+
+    $dataProvider=new CActiveDataProvider('Competition');
+
+    $this->widget('zii.widgets.grid.CGridView', array(
+	    'dataProvider'=>$dataProvider,
+	    'columns'=>array(
+		'cid',
+		array(
+		    'name'=>'title',
+		),
+		array(
+		      'name'=>'date',
+		),
+		'class',
+		array(
+		      'name'=>'type0.title',
+		      'header'=>'вид',
+		),
+		array(
+		    'name'=>'memberCount',
+		    'header'=>'Участников'
+		),
+		array(
+		    'name'=>'mainReferee.name',
+		    'header'=>'гл.судья'
+		),
+		array(
+		    'name'=>'mainSecretar.name',
+		    'header'=>'гл.секретарь'
+		),
+		array(            // display a column with "view", "update" and "delete" buttons
+		    'class'=>'CButtonColumn',
+		),
+
+	    ),
+	));
+    ?></p>
     <a href='<?php echo $this->createUrl('/competition/list/create');?>'>Зарегистрировать новые</a>
 </p>
