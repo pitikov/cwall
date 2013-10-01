@@ -4,7 +4,7 @@ class RemoveDataColumn extends CDataColumn {
 
 	protected function renderDataCellContent($row,$data)
 	{
-	    echo CHtml::link('Удалить',
+	    echo CHtml::link('<img src="/images/delete.png" alt="Удалить" title="Удалить">',
 			      array('/competition/list/delete','cid'=>$this->grid->dataProvider->data[$row]['cid']),
 			      array('onclick'=>'return confirm(\'Удалить соревнования\n\"'.
 						$this->grid->dataProvider->data[$row]['title'].
