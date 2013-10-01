@@ -2,7 +2,7 @@
 /* @var $this CurrentController */
 
 $this->breadcrumbs=array(
-	'Соревнования'=>array('/competition/current'),
+	'Соревнования'=>array('/competition/current','cid'=>Yii::app()->request->cookies['competition']->value),
 	'Участники',
 );
 ?>

@@ -7,65 +7,34 @@ $this->breadcrumbs=array(
 );
 ?>
 <h1>Список соревнований</h1>
-
-<p>
-    <a href='<?php echo $this->createUrl('/competition/list/create');?>'>Зарегистрировать новые</a>
-<?php /*
-    <table>
-	<thead bgcolor='#5c5c5c' style='color:white;'>
-	    <tr>
-		<td>№</td>
-		<td>название</td>
-		<td>дата</td>
-		<td>класс</td>
-		<td>вид</td>
-		<td>участников</td>
-		<td>гл.судья</td>
-		<td>гл.секретарь</td>
-	      </tr>
-	</thead>
-	<tbody>
-	<?php
-	    foreach($model as $item) {
-	?>  
-		    <tr>
-		<td><?php echo $item->cid;?></td>
-		<td><a href='<?php echo $this->createUrl('/competition/list/select',array(
-		    'cid'=>$item->cid));?>'><?php echo $item->title;?></a></td>
-		<td><?php echo $item->date;?></td>
-		<td><?php echo $item->class;?></td>
-		<td><?php echo $item->type0->title;?></td>
-		<td><?php echo $item->memberCount;?></td>
-		<td><?php echo $item->mainReferee->name;?></td>
-		<td><?php echo $item->mainSecretar->name;?></td>
-	    </tr>
-	<?php
-	    }
-	    
-	?>
-
-	</tbody>
-    </table>
-    */ ?>
-    <?php
-
+<?php
     $dataProvider=new CActiveDataProvider('Competition');
 
     $this->widget('zii.widgets.grid.CGridView', array(
 	    'dataProvider'=>$dataProvider,
+	    'enablePagination'=>true,
 	    'columns'=>array(
 		array(
 		    'name'=>'cid',
 		    'htmlOptions'=>array('style'=>'text-align:center'),
+		    'sortable'=>true,
 		),
 		array(
+		    'class'=>'UrlDataColumn',
 		    'name'=>'title',
+		    'type'=>'html',
+		    'footer'=>CHtml::link('Зарегистрировать новые',$this->createUrl('/competition/list/create')),
+		    'sortable'=>true,
 		),
 		array(
 		    'name'=>'date',
 		    'htmlOptions'=>array('style'=>'text-align:center'),
+		    'sortable'=>true,
 		),
-		'class',
+		array(
+		      'name'=>'class',
+		      'sortable'=>true,
+		),
 		array(
 		    'name'=>'type0.title',
 		    'htmlOptions'=>array('style'=>'text-align:center'),
@@ -82,12 +51,11 @@ $this->breadcrumbs=array(
 		    'name'=>'mainSecretar.name',
 		    'header'=>'гл.секретарь'
 		),
-		array(            // display a column with "view", "update" and "delete" buttons
-		    'class'=>'CButtonColumn',		        
+		array(
+		    'class'=>'RemoveDataColumn',
 		),
-
 	    ),
-	));
-    ?>
-    <a href='<?php echo $this->createUrl('/competition/list/create');?>'>Зарегистрировать новые</a>
-</p>
+	)
+    );
+?>
+

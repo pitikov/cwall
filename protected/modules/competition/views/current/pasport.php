@@ -5,7 +5,7 @@
 ?>
 <?php
 $this->breadcrumbs=array(
-	'Соревнования'=>array('/competition/current'),
+	'Соревнования'=>array('/competition/current','cid'=>Yii::app()->request->cookies['competition']->value),
 	'Описание соревнований',
 );
 ?>
@@ -101,7 +101,7 @@ $this->breadcrumbs=array(
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Сохранить'); ?>
+		<?php echo CHtml::submitButton('Сохранить изменения'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

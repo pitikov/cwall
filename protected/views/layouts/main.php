@@ -29,9 +29,13 @@
 	<div id="mainmenu">
 		<?php
 		    $competitionController='';
+		    $competitionId;
 		    if (isset(Yii::app()->request->cookies['competition']->value))
 		    {
 			$competitionController='/current/pasport';
+			if (isset(Yii::app()->request->cookies['competition'])) {
+			    $competitionId = array('cid'=>Yii::app()->request->cookies['competition']->value);
+			}
 		    } else {
 			$competitionController='/list/index';
 		    }

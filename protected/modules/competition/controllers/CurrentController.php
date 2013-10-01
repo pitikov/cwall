@@ -2,6 +2,8 @@
 
 class CurrentController extends Controller
 {
+	public $cid;					/// @var $cid Уникальный идентификатор соревнований
+	public $competition_struct=array();		///< @brief Описание структуры соревнований
 
 	public function init()
 	{
@@ -15,11 +17,10 @@ class CurrentController extends Controller
 	          array('label'=>'Описание соревнований', 'url'=>array('/competition/current/pasport')),
 	          array('label'=>'Структура соревнований', 'url'=>array('/competition/current/struct')),
 	          array('label'=>'Участники', 'url'=>array('/competition/current/memberlist')),
-
-
 	          array('label'=>'Закрыть', 'url'=>array('/competition/current/close')),
-
 	      );
+
+	      $this->cid=Yii::app()->request->cookies['competition']->value;
 	    }
 	}
 
@@ -65,9 +66,12 @@ class CurrentController extends Controller
 
 	public function actionPasport()
 	{
-	    $model=new Competition;
+
+	    $model= Competition::model()->findByPk($this->cid);
+
 
 	    // uncomment the following code to enable ajax-based validation
+
 	    if(isset($_POST['ajax']) && $_POST['ajax']==='competition-pasport-form')
 	    {
 		echo CActiveForm::validate($model);
@@ -79,8 +83,9 @@ class CurrentController extends Controller
 		$model->attributes=$_POST['Competition'];
 		if($model->validate())
 		{
+		    $model->save();
 		    // form inputs are valid, do something here
-		    return;
+		   // $this->redirect($this->createUrl('/competition/current/pasport','cid'=>$cid));
 		}
 	    }
 	    $this->render('pasport',array('model'=>$model));

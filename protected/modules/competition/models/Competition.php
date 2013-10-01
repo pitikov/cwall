@@ -127,4 +127,27 @@ class Competition extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	protected function afterFind()
+	{
+    	    $this->memberCount = count(Yii::app()->db->createCommand()
+	    ->select('id')->from('competition_member')
+	    ->where('id='.$this->cid)
+	    ->queryAll());
+
+	    /// @todo Преобразовывать поле date к виду, ожидаемому виджетом представления
+
+	    parent::afterFind();
+	}
+
+
+	protected function beforeSave()
+	{
+	    /// @todo Преобразовывать поле date к виду, ожидаемому базой данных
+
+	    $ret = parent::beforeSave();
+	    return $ret;
+	}
+
+
 }
